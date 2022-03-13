@@ -2,17 +2,20 @@ class OrdersController < ApplicationController
   before_action :find_order!, only: :show
 
   def index
-    @orders = Order.includes(:user).order(id: :desc)
-    @orders = @orders.where(id: params[:id]) if params[:id].present?
-    @orders = @orders.joins(:user).where(users: { email: params[:email] }) if params[:email].present?
-
+    @orders = Order
+      .includes(:user)
+      .by_number(params[:number])
+      .by_email(params[:email])
+      .order(id: :desc)
   end
 
   def show
+    @order_presenter = ::OrderPresenter.new(@order)
   end
 
   private
+
   def find_order!
-    @order = Order.find_by!(number: params[:number])
+    @order = Order.includes(order_items: :source).find_by!(number: params[:number])
   end
 end

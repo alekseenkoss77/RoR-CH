@@ -1,10 +1,10 @@
 = form_with url: orders_url, method: :get do |form|
   %row
     %col-md-3
-      = form.label :query, "Filter:"
-      = form.text_field :id, placeholder: "Number", value: params[:id]
+      = form.label :query, "Search by:"
+      = form.text_field :number, placeholder: "Number", value: params[:number]
       = form.text_field :email, placeholder: "Email", value: params[:email]
-    = form.submit "Filter"
+    = form.submit "Search"
 
 %table.table
   %thead

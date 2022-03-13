@@ -19,6 +19,9 @@ class Order < ApplicationRecord
   has_many :order_items
   has_many :payments
 
+  scope :by_number, -> (val) { where(number: val) if val.present? }
+  scope :by_email, -> (val) { joins(:user).where("lower(users.email) = ?", val.downcase) if val.present? }
+
   def to_param
     number
   end

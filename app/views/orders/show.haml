@@ -1,0 +1,54 @@
+%h3= @order_presenter.number
+%hr
+
+%h5 Address:
+%p= @order_presenter.human_address
+
+%hr
+
+%h5 User details:
+%p
+  %b Name:
+  %span= @order_presenter.user.name
+%p
+  %b Email:
+  %span= @order_presenter.user.email
+
+%hr
+
+%h5 Order items:
+
+%table.table
+  %thead
+    %tr
+      %th Source
+      %th Price
+      %th Quantity
+      %th State
+  %tbody
+    - @order.order_items.each do |item|
+      %tr
+        %td= item.source.name
+        %td= item.price
+        %td= item.quantity
+        %td= item.state
+
+%hr
+
+%h5 Payments:
+%table.table
+  %thead
+    %tr
+      %th Amount
+      %th State
+      %th Payment type
+      %th Completed at
+      %th Refunded at
+  %tbody
+    - @order.payments.each do |payment|
+      %tr
+        %td= payment.amount
+        %td= payment.state
+        %td= payment.payment_type
+        %td= payment.completed_at
+        %td= payment.refunded_at
