@@ -1,0 +1,6 @@
+- orders.each do |order|
+  %tr
+    %td= order.id
+    %td= order.state
+    %td= order.user.email
+    %td= order.created_at

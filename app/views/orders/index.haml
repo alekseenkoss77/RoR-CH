@@ -1,0 +1,17 @@
+= form_with url: orders_url, method: :get do |form|
+  %row
+    %col-md-3
+      = form.label :query, "Filter:"
+      = form.text_field :id, placeholder: "Number", value: params[:id]
+      = form.text_field :email, placeholder: "Email", value: params[:email]
+    = form.submit "Filter"
+
+%table.table
+  %thead
+    %tr
+      %th Nuber
+      %th State
+      %th Email
+      %th Created at
+  %tbody
+    = render partial: 'orders', locals: { orders: @orders }
