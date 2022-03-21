@@ -19,13 +19,13 @@
 
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li{class: current_page?(controller: "orders") ? 'active' : ''}
+            %li{class: current_page?("/orders") ? 'active' : ''}
               =link_to orders_path do
                 Orders
 
-            %li{class: current_page?(controller: "reports") ? 'active' : ''}
-              =link_to reports_path do
-                Reports
+            %li{class: current_page?("/reports/coupon_users") ? 'active' : ''}
+              =link_to reports_coupon_users_path do
+                Coupon Users Report
 
     .container-fluid{role: "main"}
       = yield

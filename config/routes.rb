@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   resources :reports, only: :index do
   end
+
+  namespace :reports do
+    resources :coupon_users, only: :index
+  end
 end

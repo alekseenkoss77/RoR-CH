@@ -1,0 +1,17 @@
+%h1 Coupon Users Report
+
+= form_with url: reports_coupon_users_url, method: :get do |form|
+  %row
+    %col-md-3
+      = form.label :coupon, "Coupon:"
+      = form.collection_select :coupon_id, Coupon.all, :id, :name, placeholder: "Coupon", prompt: true
+    = form.submit "Filter"
+
+%table.table
+  %thead
+    %tr
+      %th Email
+      %th Number of orders
+      %th Revenue
+  %tbody
+    = render partial: 'items', locals: { items: @items }
