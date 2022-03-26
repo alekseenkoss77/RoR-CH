@@ -1,0 +1,20 @@
+%h1 Sold Products Report
+
+= form_with url: reports_sold_products_url, method: :get do |form|
+  %row
+    %col-md-3
+      = form.label :from, "From:"
+      = form.date_field :from, value: params[:from]
+    %col-md-3
+      = form.label :to, "To:"
+      = form.date_field :to, value: params[:to]
+    = form.submit "Filter"
+
+%table.table
+  %thead
+    %tr
+      %th Product
+      %th Sold
+      %th Revenue
+  %tbody
+    = render partial: 'items', locals: { items: @items }

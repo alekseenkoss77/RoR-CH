@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   namespace :reports do
     resources :coupon_users, only: :index
+    resources :sold_products, only: :index
   end
 end

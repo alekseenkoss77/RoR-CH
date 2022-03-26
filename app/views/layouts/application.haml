@@ -27,5 +27,9 @@
               =link_to reports_coupon_users_path do
                 Coupon Users Report
 
+            %li{class: current_page?("/reports/sold_products") ? 'active' : ''}
+              =link_to reports_sold_products_path do
+                Sold Products Report
+
     .container-fluid{role: "main"}
       = yield
