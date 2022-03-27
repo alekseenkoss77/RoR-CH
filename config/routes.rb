@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root 'admin#index'
 
-  resources :orders, only: [:index, :show], param: :number
-
-  resources :reports, only: :index do
+  resources :orders, only: [:index, :show], param: :number do
+    member do
+      patch :cancel
+    end
   end
 
   namespace :reports do

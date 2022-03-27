@@ -30,4 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  orders:
+    cancel:
+      success: 'Order has been canceled'
+      failure: "Unable to cancel order. Please verify the order's state"

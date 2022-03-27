@@ -4,3 +4,6 @@
     %td= order.state
     %td= order.user.email
     %td= order.created_at
+    %td
+      - if order.state == Order::BUILDING
+        = link_to 'Cancel', cancel_order_path(order), method: :patch

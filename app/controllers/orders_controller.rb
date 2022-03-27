@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order!, only: :show
+  before_action :find_order!, only: [:show, :cancel]
 
   def index
     @orders = Order
@@ -11,6 +11,16 @@ class OrdersController < ApplicationController
 
   def show
     @order_presenter = ::OrderPresenter.new(@order)
+  end
+
+  def cancel
+    result = Orders::CancelOrder.new.call(@order)
+    if result.success?
+      flash[:notice] = I18n.t('orders.cancel.success')
+    else
+      flash[:alert] = I18n.t('orders.cancel.failure')
+    end
+    redirect_to order_path(@order)
   end
 
   private
